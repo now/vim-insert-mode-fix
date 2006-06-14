@@ -21,7 +21,7 @@ doc_FILES =
 lib_FILES =
 
 plugin_FILES = \
-	       plugin/now/modern-file.vim
+	       plugin/now/insert-mode-fix.vim
 
 FILES = \
 	$(doc_FILES) \
