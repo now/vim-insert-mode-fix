@@ -1,11 +1,11 @@
 " Vim plugin file
-" Maintainer:       Nikolai Weibull <nikolai@bitwi.se>
-" Latest Revision:  2006-06-06
+" Maintainer:       Nikolai Weibull <now@bitwi.se>
+" Latest Revision:  2006-06-14
 
-if exists("loaded_insert_mode_fix")
+if exists("loaded_plugin_now_insert_mode_fix")
   finish
 endif
-let loaded_insert_mode_fix = 1
+let loaded_plugin_now_insert_mode_fix = 1
 
 let s:cpo_save = &cpo
 set cpo&vim
