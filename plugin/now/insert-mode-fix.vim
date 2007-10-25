@@ -1,6 +1,6 @@
 " Vim plugin file
 " Maintainer:       Nikolai Weibull <now@bitwi.se>
-" Latest Revision:  2006-06-14
+" Latest Revision:  2007-10-25
 
 if exists("loaded_plugin_now_insert_mode_fix")
   finish
@@ -10,10 +10,13 @@ let loaded_plugin_now_insert_mode_fix = 1
 let s:cpo_save = &cpo
 set cpo&vim
 
-nnoremap <expr> i <SID>begin_insert_mode('i')
-nnoremap <expr> gi <SID>begin_insert_mode('gi')
-inoremap <silent> <Esc> <C-O>:call <SID>end_insert_mode_before()<CR><Esc>:call <SID>end_insert_mode_after()<CR>
-imap <C-c> <Esc>
+augroup insert-mode-fix
+  autocmd InsertLeave * call <SID>end_insert_mode_after()
+augroup end
+
+nnoremap <expr> i     <SID>begin_insert_mode('i')
+nnoremap <expr> gi    <SID>begin_insert_mode('gi')
+inoremap <expr> <Esc> <SID>end_insert_mode_before()
 
 function s:begin_insert_mode(command)
   let s:insert_mode_type = 'i'
@@ -26,6 +29,7 @@ function s:end_insert_mode_before()
     let s:shift_cursor = (s:insert_mode_type == 'i' && col('.') != 1)
     unlet s:insert_mode_type
   endif
+  return "\<Esc>"
 endfunction
 
 function s:end_insert_mode_after()
