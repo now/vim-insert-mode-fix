@@ -1,7 +1,7 @@
 VIMBALL = insert-mode-fix.vba
 
 FILES = \
-	plugin/now/insert-mode-fix.vim
+	plugin/now/insert-mode-fix.vivim-m
 
 .PHONY: build install package
 
